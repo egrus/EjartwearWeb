@@ -1,0 +1,144 @@
+:root {
+    --cui-code-color: #d63384;
+
+    --cui-border-width: 1px;
+    --cui-border-style: solid;
+    --cui-border-color: #ffb7c5;
+
+    --cui-border-radius: 0.375rem;
+    --cui-border-radius-sm: 0.25rem;
+    --cui-border-radius-lg: 0.5rem;
+    --cui-border-radius-xl: 1rem;
+    --cui-border-radius-xxl: 2rem;
+    --cui-border-radius-2xl: var(--cui-border-radius-xxl);
+    --cui-border-radius-pill: 50rem;
+    --cui-breakpoint-xs: 0;
+    --cui-breakpoint-sm: 576px;
+    --cui-breakpoint-md: 768px;
+    --cui-breakpoint-lg: 992px;
+    --cui-breakpoint-xl: 1200px;
+    --cui-breakpoint-xxl: 1400px;
+    --cui-mobile-breakpoint: md;
+}
+
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--cui-accordion-btn-padding-y) var(--cui-accordion-btn-padding-x);
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #fff;
+    text-align: left;
+    background-color: #000000;
+    border: 0;
+    border-radius: 0;
+    overflow-anchor: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .accordion-button {
+        transition: none;
+    }
+}
+.accordion-button:not(.collapsed) {
+    color: #ffb7c5;
+}
+.accordion-button:not(.collapsed)::after {
+    transform: var(--cui-accordion-btn-icon-transform);
+    content: "☯";
+    color: #ffb7c5;
+    font-size: 26px;
+    line-height: 26px;
+    animation: yingyang 2s ease-in-out infinite;
+}
+@keyframes yingyang {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.accordion-button::after {
+    flex-shrink: 0;
+
+    margin-left: auto;
+    content: "☯";
+    color: #ffb7c5;
+    font-size: 26px;
+    line-height: 26px;
+    margin-top: -10px;
+    background-size: var(--cui-accordion-btn-icon-width);
+    transition: var(--cui-accordion-btn-icon-transition);
+}
+@media (prefers-reduced-motion: reduce) {
+    .accordion-button::after {
+        transition: none;
+    }
+}
+.accordion-button:hover {
+    z-index: 2;
+}
+
+.accordion-header {
+    margin-bottom: 0;
+}
+.accordion-item {
+    color: var(--cui-accordion-color);
+    background-color: var(--cui-accordion-bg);
+    border: var(--cui-accordion-border-width) solid var(--cui-accordion-border-color);
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.accordion-item:first-of-type {
+    border-top-left-radius: var(--cui-accordion-border-radius);
+    border-top-right-radius: var(--cui-accordion-border-radius);
+}
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: var(--cui-accordion-inner-border-radius);
+    border-top-right-radius: var(--cui-accordion-inner-border-radius);
+}
+.accordion-item:not(:first-of-type) {
+    border-top: 0;
+}
+.accordion-item:last-of-type {
+    border-bottom-right-radius: var(--cui-accordion-border-radius);
+    border-bottom-left-radius: var(--cui-accordion-border-radius);
+}
+.accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-right-radius: var(--cui-accordion-inner-border-radius);
+    border-bottom-left-radius: var(--cui-accordion-inner-border-radius);
+}
+.accordion-item:last-of-type .accordion-collapse {
+    border-bottom-right-radius: var(--cui-accordion-border-radius);
+    border-bottom-left-radius: var(--cui-accordion-border-radius);
+}
+.accordion-body {
+    padding: var(--cui-accordion-body-padding-y) var(--cui-accordion-body-padding-x);
+}
+.accordion-flush .accordion-collapse {
+    border-width: 0;
+}
+.accordion-flush .accordion-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+}
+.accordion-flush .accordion-item:first-child {
+    border-top: 0;
+}
+.accordion-flush .accordion-item:last-child {
+    border-bottom: 0;
+}
+.accordion-flush .accordion-item .accordion-button,
+.accordion-flush .accordion-item .accordion-button.collapsed {
+    border-radius: 0;
+}
